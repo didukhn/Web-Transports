@@ -25,7 +25,7 @@ function main() {
     userName = nameInput.value || 'User Name';
     userNickName = nickNameInput.value || 'nickname';
 
-    userHeader.innerText = userName + ` (${userNickName})`;
+    userHeader.innerText = userName + ` (@${userNickName})`;
     var data = {
       name: userName,
       nickName: userNickName
@@ -37,7 +37,8 @@ function main() {
     var data = {
       name: userName,
       nickName: userNickName,
-      text: text.value
+      text: text.value,
+      date: new Date()
     };
     text.value = " ";
     socket.emit('chat message', data);
@@ -64,8 +65,9 @@ function main() {
       }
       newMsg.innerHTML = `
       <div class="message-orange">
+      <div class="user-name">${message.name}</div>
         <p class="message-content">${message.text}</p>
-        <div class="message-timestamp-right">${message.name}</div>
+        <div class="message-timestamp-right">${message.date}</div>
       </div>`;
 
       messages.appendChild(newMsg);
@@ -82,8 +84,9 @@ function main() {
     }
     newMsg.innerHTML = `
       <div class="message-orange">
+        <div class="user-name">${msg.name}</div>
         <p class="message-content">${msg.text}</p>
-        <div class="message-timestamp-right">${msg.name}</div>
+        <div class="message-timestamp-right">${msg.date}</div>
       </div>`;
 
     messages.appendChild(newMsg);
@@ -107,7 +110,7 @@ function main() {
         user.disconnectedAt = new Date(user.disconnectedAt);
 
       var newUser = document.createElement('li');
-      newUser.innerText = user.name + ` (${user.nickName})`;
+      newUser.innerText = user.name + ` (@${user.nickName})`;
 
       if (user.isTyping) {
         newUser.innerText += ' IS TYPING NOW . . .';

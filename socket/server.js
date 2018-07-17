@@ -23,6 +23,7 @@ io.on('connection', function (socket) {
   var CURRENT_USER;
 
   socket.on('chat message', function (msg) {
+    msg.date = new Date();
     messages.push(msg);
     io.emit('chat message', msg);
 

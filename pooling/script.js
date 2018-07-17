@@ -1,6 +1,8 @@
 window.onload = main;
 
 function main() {
+    $('#myModal').modal('show');
+
   var userHeader = document.getElementById('userHeader');
   var nameBtn = document.getElementById('nameButton');
   var nameInput = document.getElementById('nameInput');
@@ -8,16 +10,18 @@ function main() {
   var users = document.getElementById('users');
   var text = document.getElementById('text');
   var textSubmit = document.getElementById('textSubmit');
+   var nickNameInput = document.getElementById('nickNameInput');
 
   var userName = 'User Name';
   userHeader.innerText = userName;
 
   nameBtn.onclick = function () {
     userName = nameInput.value || 'User Name';
-    userHeader.innerText = userName;
+    userNickName = nickNameInput.value || 'nickname';
+    userHeader.innerText = userName+` (@${userNickName})`;
     var data = {
       name: userName,
-      nickName: userName
+      nickName: userNickName
     };
     ajaxRequest({
       method: 'POST',
@@ -29,7 +33,8 @@ function main() {
   textSubmit.onclick = function () {
     var data = {
       name: userName,
-      text: text.value
+      text: text.value,
+      date: new Date()
     };
     text.value = " ";
     ajaxRequest({
@@ -80,8 +85,16 @@ function main() {
       if (message.text.indexOf('@' + userName) != -1) {
         newMsg.classList.add('red');
       }
-      newMsg.innerText = message.name + " : " + message.text;
+     
+      
+      newMsg.innerHTML = `
+      <div class="message-orange">
+      <div class="user-name">${message.name}</div>
+        <p class="message-content">${message.text}</p>
+        <div class="message-timestamp-right">${message.date}</div>
+      </div>`;
       messages.appendChild(newMsg);
+
 
     }
 
@@ -89,12 +102,15 @@ function main() {
 
   setInterval(getData, 1000);
 
-  var updateUsers = function (rawUsers) {
-    parsedUsers = JSON.parse(rawUsers);
+  
+
+   function updateUsers(rawUsers) {
     users.innerHTML = '';
-    for (var user of parsedUsers) {
+    for (var user of JSON.parse(rawUsers)) {
+      
       var newUser = document.createElement('li');
-      newUser.innerText = user.name;
+      newUser.innerText = user.name + ` (@${user.nickName})`;
+      
       users.appendChild(newUser);
     }
   }

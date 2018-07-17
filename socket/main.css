@@ -2,9 +2,32 @@ ul{
   list-style: none;
 }
 
+#textSubmit{
+	border-color: grey;
+    border-radius: 10px;
+    margin-left: 0.3rem;
+}
+
+#text{
+border-radius: 10px;
+    border-color: grey;
+}
+
+ul#messages{
+	overflow-y: scroll;
+    width: 900px;
+    height: 300px;
+    display: block;
+}
 
 ul#users,ul#messages{
 padding: 0px;
+
+}
+
+ul#users{
+	 height: 350px;
+    overflow-y: scroll;
 }
 
 ul#users li{
@@ -14,7 +37,7 @@ padding: .5rem;
 margin-bottom: 1rem;
 }
 li.red {
-background-color:red;
+color:red !important;
 }
 .chat-body {
 height: 500px;
@@ -43,12 +66,17 @@ width: 400px;
 padding: 10px;
 }
 
+.user-name{
+	font-style: italic;
+    font-size: 18px;
+    font-weight: 600;
+}
 
 .message-orange {
 position: relative;
 margin-bottom: 10px;
 background-color: #A8DDFD;
-height: 50px;
+/*height: 50px;*/
 text-align: left;
 border: 1px solid #dfd087;
 border-radius: 10px;

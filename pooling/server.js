@@ -12,6 +12,10 @@ app.get('/', function(req,res){
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/main.css', function (req, res) {
+  res.sendFile(__dirname + '/main.css');
+});
+
 app.get('/script.js', function(req,res){
   res.sendFile(__dirname + '/script.js');
 });
