@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+    crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enter to the chat</h5>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">User Name:</label>
+              <input type="text" class="form-control" id="nameInput">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Nick Name:</label>
+              <input type="text" class="form-control" id="nickNameInput">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="nameButton" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-body">
+    <h3 id="userHeader"></h3>
+    <div class="row">
+      <div class="participants col-md-3 d-inline-block1">
+        <h3>Participants:</h3>
+        <ul id="users">
+        </ul>
+      </div>
+      <div class="message-flow col-md-7">
+        <ul id="messages" class="row flex-column">
+          <li>
+            <div class="message-orange">
+              <p class="message-content">I agree that your message is awesome!</p>
+              <div class="message-timestamp-right">13:37</div>
+            </div>
+          </li>
+          <li>
+            <div class="message-orange">
+              <p class="message-content">I agree that your message is awesome!</p>
+              <div class="message-timestamp-right">13:37</div>
+            </div>
+          </li>
+          <li>
+            <div class="message-orange">
+              <p class="message-content">I agree that your message is awesome!</p>
+              <div class="message-timestamp-right">13:37</div>
+            </div>
+          </li>
+
+        </ul>
+        <div class="chat-footer row my-3">
+          <textarea name="" id="text" cols="70" rows="4"></textarea>
+          <!-- <input type="submit"  > -->
+          <button type="button" class="btn " id="textSubmit">
+            <i class="fab fa-telegram-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div>
+    <!-- <input type="text" id="nameInput"> -->
+    <!-- <input type="button" id="nameButton" value="OK"> -->
+    <!-- <ul id="users"></ul> -->
+  </div>
+  <!-- <ul id="messages"></ul> -->
+  <!-- <div>
+    <textarea name="" id="text" cols="30" rows="10"></textarea>
+    <input type="submit" id="textSubmit" >
+  </div> -->
+
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/script.js"></script>
+
+</body>
+
+</html>
