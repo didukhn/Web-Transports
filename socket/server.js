@@ -68,7 +68,13 @@ io.on('connection', function (socket) {
     CURRENT_USER.disconnectedAt = new Date();
 
     console.log('disconnect');
+    messages.push({
+      name : 'BOT',
+      text : CURRENT_USER.nickName + ' was disconnected',
+      date : new Date()
+    });
 
+    io.emit('chat history', messages);
     io.emit('chat users update', users);
   });
 });

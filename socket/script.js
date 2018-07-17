@@ -118,12 +118,16 @@ function main() {
 
       if (user.connectedAt && (currDate - user.connectedAt) / 1000 <= 60) {
         newUser.innerText += ' JUST APPEARED';
+        newUser.style.backgroundColor = "green";
       } else if (user.connectedAt) {
         newUser.innerText += ' ONLINE';
+        newUser.style.backgroundColor = "lightgreen";
       } else if (user.disconnectedAt && (currDate - user.disconnectedAt) / 1000 <= 60) {
         newUser.innerText += ' JUST LEFT';
+        newUser.style.backgroundColor = "lightgray";
       } else {
         newUser.innerText += ' OFFLINE';
+        newUser.style.backgroundColor = "gray";
       }
       users.appendChild(newUser);
     }
